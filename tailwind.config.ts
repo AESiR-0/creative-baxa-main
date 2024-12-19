@@ -11,6 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#80d3ff",
+        secondary: "#0e0d0d",
+        tertiary: "#d7d7d7",
+      },
+      fontFamily: {
+        codec: ["var(--font-codec-pro)", "sans-serif"], // Use the CSS variable
       },
     },
   },

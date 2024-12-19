@@ -19,3 +19,25 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+@font-face {
+  font-family: "CodecPro";
+  src: url("/fonts/CodecPro-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CodecPro";
+  src: url("/fonts/CodecPro-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CodecPro";
+  src: url("/fonts/CodecPro-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Add other font weights or styles as needed */
