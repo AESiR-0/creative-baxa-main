@@ -16,7 +16,7 @@ export default {
         tertiary: "#d7d7d7",
       },
       fontFamily: {
-        codec: ["var(--font-codec-pro)", "sans-serif"], // Use the CSS variable
+        oufit: ["var(--font-oufit)", "sans-serif"], // Use the CSS variable
       },
     },
   },

@@ -1,34 +1,21 @@
-import localFont from "next/font/local";
+import { Reenie_Beanie } from "next/font/google";
 import './globals.css'
 import Footer from "@/components/Footer";
+import { Outfit } from 'next/font/google';
 
 
-// Define all font styles and weights
-const codecPro = localFont({
-  src: [
-    {
-      path: "/fonts/CodecPro-Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "/fonts/CodecPro-Bold.otf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "/fonts/CodecPro-Light.otf",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "/fonts/CodecPro-Italic.otf",
-      weight: "400",
-      style: "italic",
-    },
-  ],
-  variable: "--font-codec-pro", // CSS variable for Tailwind usage
-  display: "swap", // Optional: Improves font loading performance
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-outfit',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+});
+const reenieBeanie = Reenie_Beanie({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-reenie',
+  weight: ['400']
 });
 
 export default function RootLayout({
@@ -37,8 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${codecPro.variable} antialiased `}>
-
+    <html lang="en" className={`${outfit.variable} ${reenieBeanie.variable} antialiased overflow-x-hidden `}>
       <body>
         {children}
         <Footer />
