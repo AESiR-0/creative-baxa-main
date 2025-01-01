@@ -11,10 +11,10 @@ export default function PyaareLog() {
       <Title color='white' text='Pyaare Logg' />
 
       {/* Content Section */}
-      <div className="flex flex-col w-full md:flex-row items-center px-10 max-md:gap-10 justify-between md:h-[50vh]">
+      <div className="flex flex-col w-full md:flex-row items-center px-16 max-md:gap-10 justify-between md:h-[50vh]">
         {/* Team Baxa Photo Placeholder */}
         <div className="h-52 rounded-lg bg-gray-900 w-72 md:w-96 flex items-center justify-center">
-          <Image src={''} alt='Team Baxa Photo' layout="fill" objectFit="cover" className="rounded-lg" />
+          {/* <Image src={''} alt='Team Baxa Photo' layout="fill" objectFit="cover" className="rounded-lg" /> */}
         </div>
 
         {/* Plus Sign */}

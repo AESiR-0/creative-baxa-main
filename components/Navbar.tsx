@@ -14,7 +14,7 @@ export default function Navbar({ pages }: { pages: Array<Pages> }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="absolute top-0">
+    <div className="absolute cursor-pointer top-0">
       <header className="p-6 w-screen md:p-8 lg:p-10 text-white ">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
