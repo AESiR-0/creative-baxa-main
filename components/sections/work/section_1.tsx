@@ -84,10 +84,10 @@ const categories = [
 
 export default function FilteredSidebar() {
   const [activeCategory, setActiveCategory] = useState("Best Kaam<3");
-  const [expandedCategory, setExpandedCategory] = useState("Best Kaam<3");
+  const [expandedCategory, setExpandedCategory] = useState<string>("Best Kaam<3");
   const listRefs = useRef<{ [key: string]: HTMLUListElement | null }>({});
 
-  const toggleCategory = (categoryName) => {
+  const toggleCategory = (categoryName: any) => {
     if (expandedCategory === categoryName) {
       const currentList = listRefs.current[categoryName];
       if (currentList) {
@@ -97,7 +97,7 @@ export default function FilteredSidebar() {
           ease: "power2.out",
         });
       }
-      setExpandedCategory(null);
+      setExpandedCategory("");
     } else {
       const currentList = listRefs.current[categoryName];
       if (currentList) {
