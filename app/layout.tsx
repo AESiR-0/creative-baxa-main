@@ -27,7 +27,6 @@ export default function RootLayout({
     <html lang="en" className={`${outfit.variable} ${reenieBeanie.variable} antialiased overflow-x-hidden `}>
       <body>
         {children}
-        <Footer />
       </body>
     </html>
   );

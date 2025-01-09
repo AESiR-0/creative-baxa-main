@@ -6,7 +6,7 @@ import project from '@/public/static/section/pyaare log/project.png';
 
 export default function PyaareLog() {
   return (
-    <div className="bg-secondary py-20 ">
+    <div className="bg-secondary text-tertiary py-20 ">
       {/* Title Section */}
       <Title color='white' text='Pyaare Logg' />
 
