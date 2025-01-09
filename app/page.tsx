@@ -154,9 +154,12 @@ export default function Home() {
         </div>
       </div>
       <PyaareLog />
-      <Testimonials />
+      <div className="bg-white">
+        <Title color="secondary" text="not paid" />
+        <Testimonials />
+      </div>
       <Sampark />
-      <Footer bg="teritarys" />{" "}
+      <Footer bg="teritary" />{" "}
     </div>
   );
 }

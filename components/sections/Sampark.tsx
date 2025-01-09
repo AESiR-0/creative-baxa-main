@@ -149,7 +149,7 @@ const Form: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen transition-colors  bg-[#0E0D0D] flex items-center justify-center text-white px-4">
+    <div id="contact" className="min-h-screen transition-colors  bg-[#0E0D0D] flex items-center justify-center text-white px-4">
       <div className="w-full max-w-4xl p-8 rounded-lg shadow-lg">
         <div className="text-5xl w-full max-md:text-3xl max-md:mb-5  max-md:items-start max-md:justify-start max-md:m-0 max-md:p-0  font-bold md:mb-6 md:pr-32">
           <span>Kya Hum Iss </span>

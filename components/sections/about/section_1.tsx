@@ -5,22 +5,21 @@ import bluePaint from "@/public/static/logo/baxa_paint_blue.svg";
 export default function Hero() {
   return (
     <div
-      style={{ background: "url('/static/section/hero/update/nitya.png')" }}
+      style={{ background: "url('/static/section/home/hero_about.jpg')" }}
       className={` text-tertiary w-screen h-screen bg-no-repeat bg-center`}
     >
-      <div className="w-full h-full px-20 pt-28 justify-center flex flex-col">
-        <h1 className="text-9xl flex flex-col items-start justify-center max-w-lg  font-semibold lowercase leading-[0.75] ">
-          A comedian, a writer, and a designer walk into a bar. They come out
-          with an incomplete joke and a startup.
-          <span className="pt-4 text-[#80D3FF]">
-            <Image alt="logo" src={bluePaint} height={400} width={400} />{" "}
+      <div className="w-full h-full px-20 pb-20  justify-end flex flex-col">
+        <h1 className="text-4xl flex flex-col items-start justify-center max-w-xl  font-bold  leading-[1] ">
+          <span>
+            {" "}
+            A comedian, a writer, and a designer walk into a bar. They come out
+            with{" "}
+            <span className="text-primary">
+              an incomplete joke and a startup.
+            </span>{" "}
           </span>
         </h1>
         <br />
-        <h4 className="text-xl">
-          We turn businesses into brands that people{" "}
-          <span className="text-[#80D3FF]">love</span>.
-        </h4>
       </div>
     </div>
   );

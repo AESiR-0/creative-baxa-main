@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Outfit', 'CodecPro', sans-serif;
 }
 @font-face {
   font-family: "CodecPro";

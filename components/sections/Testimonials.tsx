@@ -35,11 +35,9 @@ export default function Testimonials() {
   };
 
   return (
-    <div className="bg-gray-100 py-10 px-4 sm:px-5 min-h-screen">
+    <div className="bg-white px-4 sm:px-5 py-10 pb-40">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold text-[#0E0D0D] text-center mb-10">
-          Testimonials
-        </h2>
+        
         <div className="relative overflow-hidden">
           {/* Carousel Container */}
           <div

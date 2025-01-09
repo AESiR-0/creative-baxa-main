@@ -24,7 +24,7 @@ export default function Navbar({ pages }: { pages: Array<Pages> }) {
 
           {/* Navigation Links */}
           <nav
-            className={`hidden md:flex text-sm md:text-base lg:text-lg font-bold gap-6 lg:gap-10 transition-all duration-300`}
+            className={`hidden md:flex text-sm md:text-base lg:text-lg font-bold gap-10 lg:gap-10 transition-all duration-300`}
           >
             {pages.map((page, index) => (
               <Link
