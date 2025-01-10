@@ -1,25 +1,41 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import Link from "next/link";
 
+const bestKaam = {
+  name: "Best Kaam<3",
+  items: [
+    {
+      src: "/static/kaaam dhaam/content/yjhd jkgp.png",
+      title: "Bollywood Shoot",
+    },
+    {
+      src: "/static/kaaam dhaam/events/jubin concert.png",
+      title: "Jubin Nautiyal Concert",
+    },
+    { src: "/static/kaaam dhaam/events/AE retreat.png", title: "All Events" },
+    {
+      src: "/static/kaaam dhaam/content/micro.png",
+      title: "High On Chai - Podcast",
+    },
+    { src: "/static/kaaam dhaam/branding/NT.png", title: "North Tandoor" },
+    { src: "/static/kaaam dhaam/events/aashish.png", title: "Aashish Solanki" },
+    {
+      src: "/static/kaaam dhaam/content/most boring house party ever.png",
+      title: "Most Boring House Party",
+    },
+    { src: "/static/kaaam dhaam/content/micro.png", title: "Micro Cafe" },
+    {
+      src: "/static/kaaam dhaam/content/cbx marathon.png",
+      title: "Cheesebox Marathon",
+    },
+    { src: "/static/kaaam dhaam/events/iceshow.png", title: "Ice Show" },
+  ],
+};
+
 const categories = [
-  {
-    name: "Best Kaam<3",
-    items: [
-      { title: "Bollywood Shoot" },
-      { title: "Jubin Nautiyal Concert" },
-      { title: "All Events" },
-      { title: "High On Chai - Podcast" },
-      { title: "North Tandoor" },
-      { title: "Aashish Solanki" },
-      { title: "Most Boring House Party" },
-      { title: "Micro Cafe" },
-      { title: "Cheesebox Marathon" },
-      { title: "Ice Show" },
-    ],
-  },
   {
     name: "Content Creation",
     items: [
@@ -84,11 +100,17 @@ const categories = [
 
 export default function FilteredSidebar() {
   const [activeCategory, setActiveCategory] = useState("Best Kaam<3");
-  const [expandedCategory, setExpandedCategory] = useState<string>("Best Kaam<3");
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([
+    "Best Kaam<3",
+  ]);
   const listRefs = useRef<{ [key: string]: HTMLUListElement | null }>({});
 
-  const toggleCategory = (categoryName: any) => {
-    if (expandedCategory === categoryName) {
+  const toggleCategory = (categoryName: string) => {
+    if (expandedCategories.includes(categoryName)) {
+      const newExpanded = expandedCategories.filter(
+        (cat) => cat !== categoryName
+      );
+      setExpandedCategories(newExpanded);
       const currentList = listRefs.current[categoryName];
       if (currentList) {
         gsap.to(currentList, {
@@ -97,8 +119,8 @@ export default function FilteredSidebar() {
           ease: "power2.out",
         });
       }
-      setExpandedCategory("");
     } else {
+      setExpandedCategories([...expandedCategories, categoryName]);
       const currentList = listRefs.current[categoryName];
       if (currentList) {
         gsap.set(currentList, { height: "auto" });
@@ -109,14 +131,13 @@ export default function FilteredSidebar() {
           { height: naturalHeight, duration: 0.3, ease: "power2.out" }
         );
       }
-      setExpandedCategory(categoryName);
     }
     setActiveCategory(categoryName);
   };
 
   const filteredItems =
     activeCategory === "Best Kaam<3"
-      ? categories.flatMap((category) => category.items)
+      ? bestKaam.items
       : categories.find((category) => category.name === activeCategory)
           ?.items || [];
 
@@ -125,6 +146,34 @@ export default function FilteredSidebar() {
       {/* Sidebar */}
       <div className="w-1/4 p-6">
         <ul className="space-y-3 text-sm">
+          <li>
+            <div
+              className="cursor-pointer text-lg flex gap-2 items-center hover:text-primary"
+              onClick={() => toggleCategory(bestKaam.name)}
+            >
+              {bestKaam.name}{" "}
+              <sup className="text-gray-500 text-xs">
+                {bestKaam.items.length}
+              </sup>
+            </div>
+            <ul
+              ref={(el) => {
+                listRefs.current[bestKaam.name] = el;
+              }}
+              className={`pl-4 mt-2 space-y-2 text-gray-400 overflow-hidden ${
+                expandedCategories.includes(bestKaam.name) ? "" : "hidden"
+              }`}
+              style={{
+                height: expandedCategories.includes(bestKaam.name) ? "auto" : 0,
+              }}
+            >
+              {bestKaam.items.map((item, idx) => (
+                <li key={idx} className="cursor-pointer hover:text-primary">
+                  <Link href={`#${item.title}`}>{item.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </li>
           {categories.map((category, index) => (
             <li key={index}>
               <div
@@ -141,18 +190,16 @@ export default function FilteredSidebar() {
                   listRefs.current[category.name] = el;
                 }}
                 className={`pl-4 mt-2 space-y-2 text-gray-400 overflow-hidden ${
-                  expandedCategory === category.name ? "" : "hidden"
+                  expandedCategories.includes(category.name) ? "" : "hidden"
                 }`}
                 style={{
-                  height: expandedCategory === category.name ? "auto" : 0,
+                  height: expandedCategories.includes(category.name)
+                    ? "auto"
+                    : 0,
                 }}
               >
                 {category.items.map((item, idx) => (
-                  <li
-                    key={idx}
-                    className="cursor-pointer hover:text-primary"
-                    onClick={() => setActiveCategory(category.name)}
-                  >
+                  <li key={idx} className="cursor-pointer hover:text-primary">
                     <Link href={`#${item.title}`}>{item.title}</Link>
                   </li>
                 ))}
@@ -170,9 +217,8 @@ export default function FilteredSidebar() {
             id={item.title}
             className="relative overflow-hidden rounded-lg shadow-lg"
           >
-            {/* Image */}
             <Image
-              src={item.src || "/placeholder-image.jpg"} // Placeholder if no image
+              src={item.src || "/static"}
               alt={item.title}
               width={1200}
               height={800}
